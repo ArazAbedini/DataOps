@@ -7,7 +7,7 @@ import time
 if __name__ == '__main__':
     
     
-    time.sleep(15)
+    time.sleep(20)
     
     BROKER = 'kafka:9092'
     TOPIC = 'json_topic'
@@ -32,6 +32,7 @@ if __name__ == '__main__':
         print(f'File in the address {PATH} not found')
         input("hello:")
     finally:
+        time.sleep(20)
         producer.flush()
         producer.close()
         
