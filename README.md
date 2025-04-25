@@ -100,7 +100,7 @@ flowchart LR
   
   - Increase replication factor for improving stability
 
-  - Using Alerting if cosumer reads all messages in topic by using offset (in dev checked)
+  - Using alterting if cosumer reads all messages in topic by using offset (in dev checked)
 
 
 
