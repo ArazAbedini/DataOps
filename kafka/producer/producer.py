@@ -44,7 +44,6 @@ if __name__ == '__main__':
             
     except FileNotFoundError:
         print(f'File in the address {PATH} not found')
-        input("hello:")
     finally:
         producer.flush()
         producer.close()
