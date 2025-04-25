@@ -1,18 +1,31 @@
 from kafka import KafkaProducer
+from kafka.errors import NoBrokersAvailable
 import json
 import time
+
+def wait_for_kafka(broker, max_retries=30, delay=1):
+    for i in range(max_retries):
+        try:
+            KafkaProducer(bootstrap_servers=broker)
+            print("Kafka is ready!")
+            return True
+        except NoBrokersAvailable:
+            print(f"Waiting for Kafka... (Attempt {i+1}/{max_retries})")
+            time.sleep(delay)
+    raise Exception("Kafka not ready after maximum retries")
 
 
 
 if __name__ == '__main__':
     
-    
-    time.sleep(20)
+   
     
     BROKER = 'kafka:9092'
     TOPIC = 'json_topic'
 
     PATH = '/app/files/dirty_data_large.json'
+    
+    wait_for_kafka(BROKER)
 
     producer = KafkaProducer(
         bootstrap_servers=BROKER,
@@ -30,7 +43,6 @@ if __name__ == '__main__':
             
     except FileNotFoundError:
         print(f'File in the address {PATH} not found')
-        input("hello:")
     finally:
         time.sleep(20)
         producer.flush()
