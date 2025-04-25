@@ -50,6 +50,7 @@ flowchart LR
 ]
 
 - Output sample:
+
 [
   {
     "id": 123,
@@ -64,6 +65,18 @@ flowchart LR
     "active": false
   }
 ]
+
+## Features
+
+- Only valid data is stored
+
+- All unwanted fields are removed
+
+- Availabilty for multiple timestamp formats
+
+- Partitioned Kafka publishing
+
+- Deployment with docker-compose
 
 
 
