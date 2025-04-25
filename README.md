@@ -27,10 +27,43 @@ This project is a DataOps pipeline that ingests messy JSON data via Kafka, clean
 ## Architecture
 
 flowchart LR
-    A[JSON Data File] --> B[Python Producer]
-    B --> C[Kafka Topic]
-    C --> D[Logstash Pipeline]
-    D --> E[Elasticsearch Index]
-    E --> F[Kibana Dashboard]
+    [JSON Data File] --> [Python Producer] --> [Kafka Topic] --> [Logstash Pipeline] --> [Elasticsearch Index] --> [Kibana Dashboard]
 
 ## Input and Output:
+
+- Input sample:
+  
+[
+  {
+    "id": "123",
+    "full_name": "Ali",
+    "timestamp": "2025/01/31 12:34:56",
+    "active": "true"
+  },
+  {
+    "id": "124",
+    "full_name": " ",
+    "timestamp": "2025-01-31T14:20:00Z",
+    "active": "false",
+    "extra_field": "i should be removed!"
+  }
+]
+
+- Output sample:
+[
+  {
+    "id": 123,
+    "name": "Ali",
+    "timestamp": "2025-01-31T12:34:56Z",
+    "active": true
+  },
+  {
+    "id": 124,
+    "name": null,
+    "timestamp": "2025-01-31T14:20:00Z",
+    "active": false
+  }
+]
+
+
+
