@@ -78,5 +78,16 @@ flowchart LR
 
 - Deployment with docker-compose
 
+## Challenges
+
+ - Handling multiple timestamp formats --> Handling with logStash
+ - Avoid Kafka race in situation which producer wants to ingest data before topic is created --> Handling with health check
+ - Field Normalaztion --> Handling with Logstahs 
+ - Avoid race among services --> Handling with depends on in docker-compose
+ - Uncertainty About stages --> Handling with Logs monitoring each step
+ - Slow filtering --> Handling with additional consumer in logstash 
+ - Parallelism --> Handling with Adding more Partition to solve 
+
+
 
 
