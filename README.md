@@ -88,6 +88,18 @@ flowchart LR
  - Slow filtering --> Handling with additional consumer in logstash 
  - Parallelism --> Handling with Adding more Partition to solve 
 
+ ## Improvements
+  
+  - Add unit tests for the producer.
+
+  - Use Kafka Connect formore scalable ingestion.
+
+  - Stream process while data ingested do pipeline
+
+  - Increase number of producer for parallelism
+  
+  - Increase replication factor for improving stability  
+
 
 
 
