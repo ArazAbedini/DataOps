@@ -26,6 +26,16 @@ services:
       - ./kafka/producer/files:/app/files:ro  
     restart: "no"  
 
+  kafka-producer:
+    build: ./kafka/producer
+    depends_on: [kafka]
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPIC: json_topic
+    volumes:
+      - ./kafka/producer/files:/app/files:ro  
+    restart: "no"  
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
     environment:
@@ -57,3 +67,4 @@ services:
 
 volumes:
   esdata:
+

@@ -18,8 +18,7 @@ def wait_for_kafka(broker, max_retries=30, delay=1):
 
 if __name__ == '__main__':
     
-    
-    
+   
     
     BROKER = 'kafka:9092'
     TOPIC = 'json_topic'
@@ -45,6 +44,7 @@ if __name__ == '__main__':
     except FileNotFoundError:
         print(f'File in the address {PATH} not found')
     finally:
+        time.sleep(20)
         producer.flush()
         producer.close()
         
