@@ -26,21 +26,11 @@ This project is a DataOps pipeline that ingests messy JSON data via Kafka, clean
 
 ## Architecture
 
-             +------------------+
-             |  JSON Data File  |
-             +--------+---------+
-                      |
-               [Python Producer]
-                      |
-                 Kafka Topic
-                      |
-                  Logstash
-     +----------------+---------------+
-     | Transformation, Validation, etc|
-     +----------------+---------------+
-                      |
-                Elasticsearch
-                      |
-                    Kibana
+flowchart LR
+    A[JSON Data File] --> B[Python Producer]
+    B --> C[Kafka Topic]
+    C --> D[Logstash Pipeline]
+    D --> E[Elasticsearch Index]
+    E --> F[Kibana Dashboard]
 
 ## Input and Output:
