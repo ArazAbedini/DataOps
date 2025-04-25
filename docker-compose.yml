@@ -14,6 +14,17 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CREATE_TOPICS: "json_topic:2:1"
+
+  kafka-producer:
+    build: ./kafka/producer
+    depends_on: [kafka]
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPIC: json_topic
+    volumes:
+      - ./kafka/producer/files:/app/files:ro  
+    restart: "no"  
 
   kafka-producer:
     build: ./kafka/producer
@@ -56,3 +67,4 @@ services:
 
 volumes:
   esdata:
+
