@@ -98,7 +98,9 @@ flowchart LR
 
   - Increase number of producer for parallelism
   
-  - Increase replication factor for improving stability  
+  - Increase replication factor for improving stability
+
+  - Using Alerting if cosumer reads all messages in topic by using offset (in dev checked)
 
 
 
